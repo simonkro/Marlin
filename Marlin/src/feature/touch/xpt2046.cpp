@@ -132,12 +132,7 @@ uint8_t XPT2046::read_buttons() {
           : WITHIN(x, 242, 305) ? EN_C
           : 0;
 
-<<<<<<< HEAD
-//@ little more Y
-  if (y < 165 || y > 234) return 0;
-=======
     if (x > TOUCH_SCREEN_WIDTH || !WITHIN(y, SCREEN_START_TOP, SCREEN_START_TOP + SCREEN_HEIGHT)) return 0;
->>>>>>> 2.0.6
 
     // Column and row above BUTTON_AREA_TOP
     int8_t col = (x - (SCREEN_START_LEFT)) * (LCD_WIDTH) / (TOUCHABLE_X_WIDTH),
