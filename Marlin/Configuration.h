@@ -514,14 +514,9 @@
   //#define DEFAULT_Kd 440
 
   // FLSUN Q5
-  //#define DEFAULT_Kp 12.88
-  //#define DEFAULT_Ki 0.72
-  //#define DEFAULT_Kd 57.54
-
-  //Stefans PID
-  #define DEFAULT_Kp 12.19
-  #define DEFAULT_Ki 0.76
-  #define DEFAULT_Kd 49.10
+  #define DEFAULT_Kp 9.60
+  #define DEFAULT_Ki 0.43
+  #define DEFAULT_Kd 53.32
 
 #endif // PIDTEMP
 
@@ -571,10 +566,9 @@
   //#define DEFAULT_bedKd 1675.16
 
   // FLSUN Q5
-  #define DEFAULT_bedKp 73.15
-  #define DEFAULT_bedKi 13.83
-  #define DEFAULT_bedKd 257.99
-
+  #define DEFAULT_bedKp 51.39
+  #define DEFAULT_bedKi 8.90
+  #define DEFAULT_bedKd 197.75
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
@@ -773,7 +767,7 @@
 #define X_DRIVER_TYPE  TMC2208_STANDALONE
 #define Y_DRIVER_TYPE  TMC2208_STANDALONE
 #define Z_DRIVER_TYPE  TMC2208_STANDALONE
-#define E0_DRIVER_TYPE TMC2208_STANDALONE
+#define E0_DRIVER_TYPE A4988
 #else
 #define X_DRIVER_TYPE  A4988
 #define Y_DRIVER_TYPE  A4988
@@ -1201,7 +1195,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR false
+#define INVERT_E0_DIR true
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
