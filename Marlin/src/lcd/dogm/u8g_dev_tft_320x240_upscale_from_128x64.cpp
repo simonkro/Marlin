@@ -574,20 +574,25 @@ static const uint16_t st7796_init[] = {
   #define BUTTON_SIZE_X 32
   #define BUTTON_SIZE_Y 20
 
+  #define BUTTONC_X 14
+  #define BUTTONB_X 90
+  #define BUTTONA_X 166
+  #define BUTTOND_X 242
+
   // 14, 90, 166, 242, 185 are the original values upscaled 2x.
-  #define BUTTOND_X_LO UPSCALE0(14 / 2)
+  #define BUTTOND_X_LO UPSCALE0(BUTTOND_X / 2)
   #define BUTTOND_X_HI (UPSCALE(BUTTOND_X_LO, BUTTON_SIZE_X) - 1)
 
-  #define BUTTONA_X_LO UPSCALE0(90 / 2)
+  #define BUTTONA_X_LO UPSCALE0(BUTTONA_X / 2)
   #define BUTTONA_X_HI (UPSCALE(BUTTONA_X_LO, BUTTON_SIZE_X) - 1)
 
-  #define BUTTONB_X_LO UPSCALE0(166 / 2)
+  #define BUTTONB_X_LO UPSCALE0(BUTTONB_X / 2)
   #define BUTTONB_X_HI (UPSCALE(BUTTONB_X_LO, BUTTON_SIZE_X) - 1)
 
-  #define BUTTONC_X_LO UPSCALE0(242 / 2)
+  #define BUTTONC_X_LO UPSCALE0(BUTTONC_X / 2)
   #define BUTTONC_X_HI (UPSCALE(BUTTONC_X_LO, BUTTON_SIZE_X) - 1)
 
-  #define BUTTON_Y_LO UPSCALE0(140 / 2) + 44 // 184 2x, 254 3x
+  #define BUTTON_Y_LO UPSCALE0(14 / 2) // UPSCALE0(140 / 2) + 44 // 184 2x, 254 3x
   #define BUTTON_Y_HI (UPSCALE(BUTTON_Y_LO, BUTTON_SIZE_Y) - 1)
 
   void drawImage(const uint8_t *data, u8g_t *u8g, u8g_dev_t *dev, uint16_t length, uint16_t height, uint16_t color) {
@@ -599,7 +604,7 @@ static const uint16_t st7796_init[] = {
       uint16_t k = 0;
       for (uint16_t j = 0; j < length; j++) {
         uint16_t v = TFT_MARLINBG_COLOR;
-        if (*(data + (i * (length >> 3) + (j >> 3))) & (0x80 >> (j & 7)))
+        if (*(data + ((height-1-i) * (length >> 3) + ((length-1-j) >> 3))) & (0x80 >> ((length-1-j) & 7)))
           v = color;
         else
           v = TFT_MARLINBG_COLOR;
